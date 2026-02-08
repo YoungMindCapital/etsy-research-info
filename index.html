@@ -1,81 +1,44 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Etsy Research Info</title>
-    <meta name="description" content="Public info page for Etsy API access review." />
-    <style>
-      :root {
-        --bg: #f6f3ee;
-        --card: #ffffff;
-        --text: #1f2220;
-        --muted: #5d635d;
-        --line: #e5decf;
-        --accent: #177b59;
-      }
-      html, body {
-        margin: 0;
-        padding: 0;
-        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-      }
-      .wrap {
-        max-width: 780px;
-        margin: 56px auto;
-        padding: 0 20px;
-      }
-      .card {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        padding: 26px;
-      }
-      h1 {
-        margin: 0 0 10px;
-        font-size: 1.8rem;
-      }
-      p {
-        color: var(--muted);
-        line-height: 1.6;
-      }
-      ul {
-        line-height: 1.8;
-      }
-      .badge {
-        display: inline-block;
-        margin-bottom: 10px;
-        padding: 4px 10px;
-        border-radius: 999px;
-        background: #eaf7f1;
-        color: var(--accent);
-        font-size: 0.82rem;
-        font-weight: 600;
-      }
-      a { color: var(--accent); }
-    </style>
-  </head>
-  <body>
-    <main class="wrap">
-      <section class="card">
-        <span class="badge">Public App Info</span>
-        <h1>Etsy Market Research Tool</h1>
-        <p>
-          This page provides public information for Etsy API access review.
-          The app is a single-user market research dashboard used to analyze keywords,
-          demand, competition snapshots, pricing signals, and historical trends.
-        </p>
-        <ul>
-          <li>No scraping is used.</li>
-          <li>Marketplace Insights data is entered manually by the user.</li>
-          <li>Automated data retrieval uses Etsy Open API only.</li>
-          <li>The tool is for research and decision support before shop launch.</li>
-        </ul>
-        <p>
-          Contact: <a href="mailto:youngmindcapital@gmail.com">youngmindcapital@gmail.com</a>
-        </p>
-      </section>
-    </main>
-  </body>
-</html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Etsy Research Demo App</title><style>
+:root{--bg:#f6f3ee;--card:#fffdf9;--line:#e7dfcf;--txt:#1f2220;--muted:#5d635d;--ok:#177b59;--bad:#c6352a}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Segoe UI,system-ui,sans-serif;color:var(--txt)}.w{max-width:1100px;margin:0 auto;padding:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.grow{flex:1}.btn{border:1px solid var(--line);background:#fff;padding:8px 11px;border-radius:9px;cursor:pointer}.btn.p{background:var(--ok);color:#fff;border-color:var(--ok)}.btn.d{color:var(--bad);border-color:var(--bad)}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:8px 10px}textarea{min-height:86px}table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid var(--line);padding:8px;font-size:.9rem;text-align:left;vertical-align:top}th{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.sub{font-size:.82rem;color:var(--muted)}.ok{color:var(--ok)}.err{color:var(--bad)}.tabs button.active{background:#ebf8f2;border-color:var(--ok);color:var(--ok);font-weight:600}.hidden{display:none}
+</style></head><body><main class="w">
+<div class="card"><h2 style="margin:0">Etsy Research App (Interactive Demo)</h2><p class="sub" style="margin:.4rem 0 0">This is a real working web app on GitHub Pages (not screenshots). Local demo data is saved in your browser.</p></div>
+<div class="row tabs card" id="tabs" style="justify-content:space-between"><div class="row"><button data-v="kw" class="active">Keywords</button><button data-v="imp">Volume Import</button><button data-v="opp">Opportunities</button><button data-v="runs">Runs</button></div><div class="row"><button id="seed">Load Demo Data</button><button id="reset" class="d">Reset Data</button></div></div>
+<section id="kwV"><div class="card"><h3 style="margin-top:0">Add Keywords</h3><div class="row"><input id="k1" class="grow" placeholder="single keyword"/><button id="add1" class="btn p">Add</button></div><div style="margin-top:8px"><textarea id="kb" placeholder="bulk add (one per line)"></textarea><div class="row" style="margin-top:8px"><button id="addb" class="btn">Bulk Add</button></div></div><div id="km" class="sub"></div></div>
+<div class="card"><div class="row" style="justify-content:space-between"><h3 style="margin:0">Keyword Inventory</h3><div class="row"><button id="snap" class="btn p">Run Snapshots for Selected (0)</button><button id="del" class="btn d">Delete Selected (0)</button></div></div><div style="overflow:auto"><table><thead><tr><th><input id="all" type="checkbox"/></th><th>Keyword</th><th>Latest Demand</th><th>Decision</th><th>Status</th><th>Tags</th><th>Notes</th></tr></thead><tbody id="kt"></tbody></table></div></div></section>
+<section id="impV" class="hidden"><div class="card"><h3 style="margin-top:0">Marketplace Insights Import</h3><p class="sub">Use <code>keyword | searches_30d | listings_30d</code> or CSV. Optional date: <code>YYYY-MM-DD</code>.</p><textarea id="in"></textarea><div class="row" style="margin-top:8px"><button id="imp" class="btn p">Import Valid Rows</button><span id="im" class="sub"></span></div></div><div class="card"><h3 style="margin-top:0">Parser Preview</h3><div id="ie" class="sub"></div><div style="overflow:auto"><table><thead><tr><th>Keyword</th><th>Searches</th><th>Listings</th><th>Date</th></tr></thead><tbody id="ip"></tbody></table></div></div></section>
+<section id="oppV" class="hidden"><div class="card"><h3 style="margin-top:0">Opportunity Board</h3><div class="row"><input id="fS" type="number" placeholder="Min searches" style="max-width:160px"/><input id="fD" type="number" step="0.01" min="0" max="1" placeholder="Max top3" style="max-width:150px"/><input id="fP" type="number" step="0.01" placeholder="Min median price" style="max-width:170px"/><select id="fDec" style="max-width:150px"><option value="ALL">ALL</option><option>EXPLORE</option><option>BUILD</option><option>IGNORE</option></select><button id="fa" class="btn">Apply</button><button id="ea" class="btn">Export All CSV</button><button id="eb" class="btn">Export Build CSV</button></div><div id="om" class="sub"></div></div><div class="card" style="overflow:auto"><table><thead><tr><th>Keyword</th><th>Demand</th><th>Ratio</th><th>Score</th><th>Median</th><th>Top3</th><th>Decision</th></tr></thead><tbody id="ot"></tbody></table></div></section>
+<section id="runsV" class="hidden"><div class="card"><h3 style="margin-top:0">Runs Log</h3><div style="overflow:auto"><table><thead><tr><th>ID</th><th>Date</th><th>Status</th><th>Keywords</th><th>Notes</th></tr></thead><tbody id="rt"></tbody></table></div></div></section>
+<p class="sub">Contact: <a href="mailto:youngmindcapital@gmail.com">youngmindcapital@gmail.com</a></p>
+</main><script>
+(()=>{const K='etsy_demo_v3',S=new Set();let st=JSON.parse(localStorage.getItem(K)||'{"keywords":[],"runs":[]}');if(!st.keywords)st.keywords=[];if(!st.runs)st.runs=[];const q=id=>document.getElementById(id),n=v=>new Intl.NumberFormat('en-US',{maximumFractionDigits:2}).format(v),pct=v=>v==null?'-':(v*100).toFixed(1)+'%',cur=v=>v==null?'-':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(v),id=()=>crypto.randomUUID?crypto.randomUUID():'id_'+Date.now()+Math.random().toString(16).slice(2),norm=s=>String(s||'').trim().toLowerCase().replace(/\s+/g,' '),save=()=>localStorage.setItem(K,JSON.stringify(st));const F={minS:500,maxD:.3,minP:20,dec:'ALL'};q('fS').value=F.minS;q('fD').value=F.maxD;q('fP').value=F.minP;
+const up=(txt)=>{txt=norm(txt);if(!txt)return null;let k=st.keywords.find(x=>x.text===txt);if(k)return k;k={id:id(),text:txt,status:'ACTIVE',decision:'EXPLORE',tags:[],notes:'',demand:[],snaps:[]};st.keywords.push(k);return k};
+const latest=(arr,key)=>arr.slice().sort((a,b)=>String(a[key]).localeCompare(String(b[key]))).at(-1)||null;
+const parse=(raw)=>{const rows=[],err=[];(raw||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean).forEach((ln,i)=>{const c=(ln.includes('|')?ln.split('|'):ln.split(',')).map(x=>x.trim());if(i===0&&c.some(x=>/keyword|searches|listings/i.test(x)))return;if(c.length<3||c.length>4){err.push('Line '+(i+1)+': expected 3 or 4 columns');return}const kw=norm(c[0]),s=Number(String(c[1]).replace(/,/g,'')),l=Number(String(c[2]).replace(/,/g,'')),d=c[3]||'';if(!kw){err.push('Line '+(i+1)+': keyword required');return}if(!Number.isFinite(s)||s<0){err.push('Line '+(i+1)+': invalid searches');return}if(!Number.isFinite(l)||l<0){err.push('Line '+(i+1)+': invalid listings');return}if(d&&!/^\d{4}-\d{2}-\d{2}$/.test(d)){err.push('Line '+(i+1)+': bad date');return}rows.push({keyword:kw,searches30d:Math.round(s),listings30d:Math.round(l),collectedAt:d});});return{rows,errors:err}};
+const rnd=(seed)=>()=>((seed=(seed*1664525+1013904223)%4294967296)/4294967296);
+const snap=(kw)=>{let h=0;for(let i=0;i<kw.length;i++)h=(h*31+kw.charCodeAt(i))>>>0;const r=rnd((h^Date.now())>>>0),m=+(8+r()*70).toFixed(2),p25=+(m*(.65+r()*.2)).toFixed(2),p75=+(m*(1.15+r()*.3)).toFixed(2),t1=+(.05+r()*.35).toFixed(3),t3=+(Math.min(.95,t1+.08+r()*.55)).toFixed(3);return{createdAt:new Date().toISOString(),apiTotalCount:Math.floor(50+r()*45000),stats:{price:{median:m,p25,p75},dominance:{top1Share:t1,top3Share:t3,hhi:+(t1*t1+t3*.2).toFixed(3)}}}};
+const msg=(id,text,bad)=>{const e=q(id);e.textContent=text||'';e.className='sub '+(text?(bad?'err':'ok'):'')};
+function rKW(){q('snap').textContent=`Run Snapshots for Selected (${S.size})`;q('del').textContent=`Delete Selected (${S.size})`;const rows=[...st.keywords].sort((a,b)=>a.text.localeCompare(b.text));q('all').checked=rows.length>0&&rows.every(x=>S.has(x.id));q('kt').innerHTML=rows.length?rows.map(k=>{const d=latest(k.demand,'collectedAt'),sn=latest(k.snaps,'createdAt');if(!k._draft)k._draft={decision:k.decision,status:k.status,tags:k.tags.join(', '),notes:k.notes};return `<tr><td><input data-a="sel" data-id="${k.id}" type="checkbox" ${S.has(k.id)?'checked':''}/></td><td><b>${k.text}</b></td><td>${d?`${n(d.searches30d)} / ${n(d.listings30d)} (${d.collectedAt})`:'No data'}</td><td><select data-f="decision" data-id="${k.id}"><option ${k._draft.decision==='EXPLORE'?'selected':''}>EXPLORE</option><option ${k._draft.decision==='BUILD'?'selected':''}>BUILD</option><option ${k._draft.decision==='IGNORE'?'selected':''}>IGNORE</option></select></td><td><select data-f="status" data-id="${k.id}"><option ${k._draft.status==='ACTIVE'?'selected':''}>ACTIVE</option><option ${k._draft.status==='ARCHIVED'?'selected':''}>ARCHIVED</option></select></td><td><input data-f="tags" data-id="${k.id}" value="${(k._draft.tags||'').replaceAll('"','&quot;')}"/></td><td><textarea data-f="notes" data-id="${k.id}">${(k._draft.notes||'').replaceAll('<','&lt;')}</textarea></td></tr>`}).join(''):"<tr><td colspan='7' class='sub'>No keywords yet.</td></tr>"}
+function rIMP(){const p=parse(q('in').value);q('ie').textContent=p.errors.length?p.errors.join(' | '):'No parser errors.';q('ie').className='sub '+(p.errors.length?'err':'');q('ip').innerHTML=p.rows.length?p.rows.slice(0,250).map(r=>`<tr><td>${r.keyword}</td><td>${n(r.searches30d)}</td><td>${n(r.listings30d)}</td><td>${r.collectedAt||'today'}</td></tr>`).join(''):"<tr><td colspan='4' class='sub'>Paste rows to preview.</td></tr>";return p}
+function rOP(){const rows=st.keywords.filter(k=>k.status==='ACTIVE').map(k=>{const d=latest(k.demand,'collectedAt'),s=latest(k.snaps,'createdAt'),sr=d?d.searches30d:0,ls=d?d.listings30d:0,ratio=d?sr/Math.max(ls,1):0,score=d?ratio*Math.log10(sr+1):0;return{k,d,s,ratio,score,med:s?.stats?.price?.median??null,t3:s?.stats?.dominance?.top3Share??null}}).filter(r=>(r.d?.searches30d||0)>=F.minS&&(r.t3??0)<=F.maxD&&(r.med??0)>=F.minP&&(F.dec==='ALL'||r.k.decision===F.dec)).sort((a,b)=>b.score-a.score);q('ot').innerHTML=rows.length?rows.map(r=>`<tr><td><b>${r.k.text}</b><div class='sub'>${r.k.tags.join(', ')||'No tags'}</div></td><td>${r.d?`${n(r.d.searches30d)} / ${n(r.d.listings30d)}`:'No data'}</td><td>${n(r.ratio||0)}</td><td>${n(r.score||0)}</td><td>${cur(r.med)}</td><td>${pct(r.t3)}</td><td>${r.k.decision}</td></tr>`).join(''):"<tr><td colspan='7' class='sub'>No rows match current filters.</td></tr>"}
+function rRUN(){q('rt').innerHTML=st.runs.length?st.runs.map(r=>`<tr><td>${r.id}</td><td>${new Date(r.runAt).toISOString().replace('T',' ').slice(0,16)}</td><td>${r.status}</td><td>${n(r.totalKeywords)}</td><td>${r.notes||'-'}</td></tr>`).join(''):"<tr><td colspan='5' class='sub'>No runs yet.</td></tr>"}
+function rAll(){rKW();rIMP();rOP();rRUN()}
+q('tabs').addEventListener('click',e=>{const b=e.target.closest('button[data-v]');if(!b)return;['kw','imp','opp','runs'].forEach(v=>{q(v+'V').classList.toggle('hidden',v!==b.dataset.v)});[...q('tabs').querySelectorAll('button[data-v]')].forEach(x=>x.classList.toggle('active',x===b))});
+q('add1').onclick=()=>{const k=up(q('k1').value);if(!k){msg('km','Enter a keyword first.',1);return}q('k1').value='';save();rAll();msg('km','Keyword added.',0)};
+q('addb').onclick=()=>{const arr=[...new Set(q('kb').value.split(/\r?\n/).map(norm).filter(Boolean))];if(!arr.length){msg('km','No keywords found in bulk input.',1);return}arr.forEach(up);q('kb').value='';save();rAll();msg('km',arr.length+' keywords added.',0)};
+q('all').onchange=e=>{if(e.target.checked)st.keywords.forEach(k=>S.add(k.id));else S.clear();rKW()};
+q('kt').addEventListener('change',e=>{const t=e.target,id=t.dataset.id;if(!id)return;const k=st.keywords.find(x=>x.id===id);if(!k)return;if(t.dataset.a==='sel'){t.checked?S.add(id):S.delete(id);rKW();return}if(t.dataset.f){k._draft=k._draft||{};k._draft[t.dataset.f]=t.value}});
+q('kt').addEventListener('input',e=>{const t=e.target,id=t.dataset.id;if(!id||!t.dataset.f)return;const k=st.keywords.find(x=>x.id===id);if(!k)return;k._draft=k._draft||{};k._draft[t.dataset.f]=t.value});
+q('snap').onclick=()=>{const sel=st.keywords.filter(k=>S.has(k.id));if(!sel.length){msg('km','Select at least one keyword.',1);return}sel.forEach(k=>k.snaps.push(snap(k.text)));st.runs.unshift({id:'run_'+Date.now(),runAt:new Date().toISOString(),status:'SUCCESS',totalKeywords:sel.length,notes:'Snapshots simulated for public demo.'});S.clear();save();rAll();msg('km','Snapshot run completed for '+sel.length+' keyword(s).',0)};
+q('del').onclick=()=>{const sel=st.keywords.filter(k=>S.has(k.id));if(!sel.length){msg('km','Select at least one keyword.',1);return}if(!confirm('Delete '+sel.length+' selected keyword(s)?'))return;const ids=new Set(sel.map(x=>x.id));st.keywords=st.keywords.filter(k=>!ids.has(k.id));S.clear();save();rAll();msg('km',sel.length+' keyword(s) deleted.',0)};
+q('in').addEventListener('input',rIMP);
+q('imp').onclick=()=>{const p=rIMP();if(p.errors.length){msg('im','Fix parser errors before importing.',1);return}const td=new Date().toISOString().slice(0,10);p.rows.forEach(r=>{const k=up(r.keyword),d=r.collectedAt||td,x=k.demand.find(v=>v.collectedAt===d);if(x){x.searches30d=r.searches30d;x.listings30d=r.listings30d}else{k.demand.push({collectedAt:d,searches30d:r.searches30d,listings30d:r.listings30d})}});save();rAll();msg('im','Imported '+p.rows.length+' row(s).',0)};
+q('fa').onclick=()=>{F.minS=Number(q('fS').value||500);F.maxD=Number(q('fD').value||.3);F.minP=Number(q('fP').value||20);F.dec=q('fDec').value||'ALL';rOP()};
+function dl(name,rows){if(!rows.length){msg('om','No rows available for export.',1);return}const h=Object.keys(rows[0]),ls=[h.join(',')];rows.forEach(r=>ls.push(h.map(k=>{const v=r[k]==null?'':String(r[k]);return /[",\n]/.test(v)?'"'+v.replaceAll('"','""')+'"':v}).join(',')));const blob=new Blob([ls.join('\n')],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(u);msg('om','Exported '+rows.length+' row(s).',0)}
+function exRows(){return st.keywords.map(k=>{const d=latest(k.demand,'collectedAt'),s=latest(k.snaps,'createdAt'),ratio=d?d.searches30d/Math.max(d.listings30d,1):0,score=d?ratio*Math.log10(d.searches30d+1):0;return{keyword:k.text,status:k.status,decisionStatus:k.decision,tags:k.tags.join(';'),searches30d:d?.searches30d||'',listings30d:d?.listings30d||'',demandCollectedAt:d?.collectedAt||'',opportunityRatio:ratio?ratio.toFixed(4):'',opportunityScore:score?score.toFixed(4):'',apiTotalCount:s?.apiTotalCount||'',medianPrice:s?.stats?.price?.median||'',top3Share:s?.stats?.dominance?.top3Share||'',keywordNotes:k.notes||''}})}
+q('ea').onclick=()=>dl('etsy-keywords-all-demo.csv',exRows());q('eb').onclick=()=>dl('etsy-build-shortlist-demo.csv',exRows().filter(r=>r.decisionStatus==='BUILD'));
+q('seed').onclick=()=>{st={keywords:[],runs:[]};['wedding guest book','printable wall art','baby shower invite','minimalist line drawing','pet memorial print'].forEach(t=>{const k=up(t);k.tags=['demo',t.includes('print')?'digital':'physical'];k.notes='Demo record';for(let i=3;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i*7);k.demand.push({collectedAt:d.toISOString().slice(0,10),searches30d:Math.floor(400+Math.random()*2e4),listings30d:Math.floor(120+Math.random()*9e3)})}k.snaps.push(snap(t))});st.runs.unshift({id:'run_'+Date.now(),runAt:new Date().toISOString(),status:'SUCCESS',totalKeywords:st.keywords.length,notes:'Initial seeded snapshot run.'});S.clear();save();rAll();msg('km','Demo data loaded.',0)};
+q('reset').onclick=()=>{if(!confirm('Reset all demo data?'))return;st={keywords:[],runs:[]};S.clear();save();rAll()};
+rAll();
+})();
+</script></body></html>
